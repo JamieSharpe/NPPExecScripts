@@ -30,12 +30,8 @@ NPP_SAVE
 SET compiler = $(FULL_CURRENT_PATH)
 NPP_RUN "$(compiler)"
 UNSET compiler
-::cpp2
+::lua
 NPP_SAVE
-SET g++ =C:\Program Files (x86)\CodeBlocks\MinGW\bin\g++.exe
-SET obj = $(CURRENT_DIRECTORY)\$(NAME_PART)
-"$(g++)" -c "$(FULL_CURRENT_PATH)" -o "$(obj).o"
-"$(g++)" "$(obj).o" -o "$(obj).exe"
-NPP_RUN "$(obj).exe"
-UNSET obj
-UNSET g++
+SET interpreter = C:\Lua\5.1\lua.exe
+"$(interpreter)" "$(FULL_CURRENT_PATH)"
+UNSET interpreter
