@@ -35,3 +35,9 @@ NPP_SAVE
 SET interpreter = C:\Lua\5.1\lua.exe
 "$(interpreter)" "$(FULL_CURRENT_PATH)"
 UNSET interpreter
+::love2D
+NPP_SAVE
+SET love2d = C:\love2D\love.exe
+NPP_RUN $(love2d) $(CURRENT_DIRECTORY)
+UNSET love2d
+
