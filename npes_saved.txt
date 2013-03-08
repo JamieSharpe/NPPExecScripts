@@ -67,3 +67,17 @@
         NPP_RUN $(love2d) $(CURRENT_DIRECTORY)
     echo "Removing variables..."
         UNSET love2d
+
+::Python
+    echo "Saving file..."
+        NPP_SAVE
+    echo "Setup variables..."
+        //Change this variable to point to the lua.exe
+        SET interpreter = "C:\Python33\python.exe"
+    echo "Executing file..."
+        //use NPP_RUN line to call externally
+        //NPP_RUN $(interpreter) $(FULL_CURRENT_PATH)
+        //use below line to call internally
+        $(interpreter) $(FULL_CURRENT_PATH)
+    echo "Removing variables..."
+        UNSET interpreter
