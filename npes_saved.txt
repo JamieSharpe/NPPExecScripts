@@ -81,3 +81,12 @@
         $(interpreter) $(FULL_CURRENT_PATH)
     echo "Removing variables..."
         UNSET interpreter
+::Makefile
+    echo "Saving file..."
+        NPP_SAVE
+    echo "Changing to current directory..."
+        CD $(CURRENT_DIRECTORY)
+    echo "Getting user input..."
+         inputbox "What arguments do you want to pass to make? Leave blank for none."
+    echo "Executing file..."
+        make $(INPUT)
