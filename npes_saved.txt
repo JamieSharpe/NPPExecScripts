@@ -23,11 +23,13 @@
         NPP_SAVE
     echo "Setup variables..."
         //Change this variable to point to the pdflatex.exe
-        SET pdflatex = "C:\Program Files\MiKTeX 2.9\miktex\bin\x64\pdflatex.exe"
+        SET pdflatex = "C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\pdflatex.exe"
     echo "Changing to current directory..."
         CD $(CURRENT_DIRECTORY)
+    echo "Closing pdf viewer"
+        taskkill /IM "Foxit Reader.exe"
     echo "Converting file to PDF and saving in current directory..."
-        "$(pdflatex)" "$(FULL_CURRENT_PATH)"
+        $(pdflatex) "$(FULL_CURRENT_PATH)"
     echo "Opening the PDF..."
         NPP_RUN $(NAME_PART).pdf
     echo "Destroying variables..."
