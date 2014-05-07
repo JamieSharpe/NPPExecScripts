@@ -1,3 +1,21 @@
+::rust
+    echo "Saving file..."
+        NPP_SAVE
+    echo "Setup variables..."
+        //Change this variable to point to the g++.exe
+        SET rust = "C:\Program Files (x86)\Rust\bin\rustc.exe"
+        SET obj = $(CURRENT_DIRECTORY)\$(NAME_PART)
+    echo "Executing file..."
+        //use NPP_RUN lines to call externally
+        //NPP_RUN $(rust) "$(obj).rs" -o "$(obj).exe"
+        //NPP_RUN "$(obj).exe"
+        //use below lines to call internally
+        $(rust) "$(obj).rs" -o "$(obj).exe"
+        "$(obj).exe"
+    echo "Removing variables..."
+        UNSET obj
+        UNSET rust
+
 ::c++
     echo "Saving file..."
         NPP_SAVE
