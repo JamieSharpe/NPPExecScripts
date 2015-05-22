@@ -92,13 +92,42 @@
     echo "Saving file..."
         NPP_SAVE
     echo "Setup variables..."
-        //Change this variable to point to the lua.exe
+        //Change this variable to point to the python.exe
         SET interpreter = "C:\Python33\python.exe"
     echo "Executing file..."
         //use NPP_RUN line to call externally
         //NPP_RUN $(interpreter) $(FULL_CURRENT_PATH)
         //use below line to call internally
         $(interpreter) $(FULL_CURRENT_PATH)
+    echo "Removing variables..."
+        UNSET interpreter
+        
+::Scheme
+    echo "Saving file..."
+        NPP_SAVE
+    echo "Setup variables..."
+        //Change this variable to point to the scheme.exe
+        SET interpreter = "C:\Program Files (x86)\MIT-GNU Scheme\bin\mit-scheme.exe"
+        SET libraries = "C:\Program Files (x86)\MIT-GNU Scheme\lib"
+    echo "Executing file..."
+        //use NPP_RUN line to call externally
+        // This uses a custom helper file for display setup.
+        NPP_RUN $(interpreter) --library $(libraries) -load "C:\Users\Jamie\Documents\Lisp\helper.lsp" -load "$(FULL_CURRENT_PATH)"
+    echo "Removing variables..."
+        UNSET interpreter
+        UNSET libraries
+
+::Lisp
+    echo "Saving file..."
+        NPP_SAVE
+    echo "Setup variables..."
+        //Change this variable to point to the gcl.exe
+        SET interpreter = "C:\Program Files\GCL-2.6.1\bin\gcl.exe"
+    echo "Executing file..."
+        //use NPP_RUN line to call externally
+        //NPP_RUN $(interpreter) $(FULL_CURRENT_PATH)
+        //use below line to call internally
+        $(interpreter) -load $(FULL_CURRENT_PATH)
     echo "Removing variables..."
         UNSET interpreter
 
